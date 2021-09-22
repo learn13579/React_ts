@@ -1,0 +1,15 @@
+.post {
+    background: aquamarine;
+    border-radius: 10px;
+    margin: 30px;
+    padding: 20px;
+}
+
+.post>a{
+    text-decoration: none;
+    background: silver;
+    color: midnightblue;
+    border-radius: 10px;
+    border: 2px solid midnightblue;
+    padding: 5px;
+}

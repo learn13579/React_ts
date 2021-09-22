@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Posts from "./Posts";
+import PostDetails from "./PostDetails";
+import {
+    BrowserRouter as Router,
+    Link, Route, RouteComponentProps, Switch
+} from "react-router-dom";
+import {IPost} from "./models/IPost";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    return (
+        <div>
+
+            <Router>
+                <Link to={'/'}>home</Link>
+                <br/>
+                <Link to={'/posts'}>posts</Link>
+
+                <Switch>
+                    <Route exact path={'/'}> HOME </Route>
+                    <Route path={'/posts'} render={() => <Posts/>}/>
+
+                    {/*<Route path={'/posts:id'} component={PostDetails}/>*/}
+                    <Route path={'/posts:id'} render={(props:RouteComponentProps<{}, {}, IPost | any>) => <PostDetails {...props}/>}/>
+
+                </Switch>
+
+            </Router>
+
+        </div>
+    );
 }
 
 export default App;
